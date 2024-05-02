@@ -2,7 +2,7 @@
 region=south-america/brazil
 port="7070:70"
 vol=$(docker volume inspect osm-data)
-if [[ $?=1 ]] then;
+if [[ $?=1 ]]; then
     docker volume create osm-data
 fi
 if ! [ -f *osm.pbf ]; then
