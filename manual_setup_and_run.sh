@@ -1,5 +1,7 @@
 #! /bin/bash
+region=south-america/brazil
+port="7070:70"
 docker volume create osm-data
-./download_malta_data.sh
-./setup.sh
-./launch_tiles_server.sh
+./download_data.sh -r "$region"
+./setup.sh 
+./launch_tiles_server.sh -p "$port"
