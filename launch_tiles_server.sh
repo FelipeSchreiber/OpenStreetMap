@@ -13,6 +13,7 @@ fi
 
 docker run \
     -p ${port} \
+    -e THREADS=8 \
     -v osm-data:/data/database/ \
     -d overv/openstreetmap-tile-server \
     run
