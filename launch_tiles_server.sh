@@ -16,5 +16,5 @@ docker run \
     -e THREADS=8 \
     -v osm-data:/data/database/ \
     -d overv/openstreetmap-tile-server \
-    --shm-size="192m" \
     run
+    # --shm-size="4g" \
