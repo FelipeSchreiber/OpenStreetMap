@@ -7,6 +7,5 @@
 
 ### OR
 <ol>
-  <li>download_and_setup.sh</li>
-  <li>launch_tiles_server.sh</li>
+  <li>manual_setup_and_run.sh -r region -p port</li>
 </ol> 
