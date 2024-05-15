@@ -7,12 +7,12 @@ do
 done
 
 if [ -z "$port" ]; then
-    echo "--- setting default \$port to 8080:80"
-    port="${port:-8080:80}"
+    echo "--- setting default \$port to 7070:70"
+    port="${port:-7070:70}"
 fi
 
 docker run \
-    -p ${port} \
+    -p "$port" \
     -e THREADS=8 \
     -v osm-data:/data/database/ \
     -d overv/openstreetmap-tile-server \

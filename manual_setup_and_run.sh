@@ -1,10 +1,15 @@
 #! /bin/bash
+: '
+https://switch2osm.org/serving-tiles/using-a-docker-container/
+'
 
-while getopts r:p: flag
+download_from_container=false
+while getopts r:p:d flag
 do
     case "${flag}" in
         r) region=${OPTARG};;
         p) port=${OPTARG};;
+        d) download_from_container=true;;
     esac
 done
 
@@ -18,12 +23,17 @@ if [ -z "$port" ]; then
     port="${port:-7070:70}"
 fi
 
-vol=$(docker volume inspect osm-data)
-if [[ $?=1 ]]; then
-    docker volume create osm-data
+if $download_from_container; then
+    ./download_inside_container.sh -r "$region"
+else
+    if ! [ -f *osm.pbf ]; then
+        ./download_data.sh -r "$region"
+    fi
+    vol=$(docker volume inspect osm-data)
+    if [[ $?=1 ]]; then
+        docker volume create osm-data
+    fi
+    ./setup.sh 
 fi
-if ! [ -f *osm.pbf ]; then
-    ./download_data.sh -r "$region"
-fi
-./setup.sh 
+echo "################ FINISHED SETUP ################"
 ./launch_tiles_server.sh -p "$port"
