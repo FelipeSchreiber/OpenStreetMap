@@ -10,7 +10,7 @@ if [ -z "$port" ]; then
     echo "--- setting default \$port to 7070:70"
     port="${port:-7070:70}"
 fi
-
+echo "$port"
 docker run \
     -p "$port" \
     -e THREADS=8 \
