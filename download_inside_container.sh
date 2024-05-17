@@ -11,7 +11,6 @@ if [ -z "$region" ]; then
     region="${region:-europe/malta}"
 fi
 echo "#################### IMPORTING $region ####################"
-docker volume create osm-data
 docker run \
     -e DOWNLOAD_PBF=https://download.geofabrik.de/${region}-latest.osm.pbf \
     -e DOWNLOAD_POLY=https://download.geofabrik.de/${region}.poly \

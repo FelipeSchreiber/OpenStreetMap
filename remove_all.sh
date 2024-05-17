@@ -5,3 +5,4 @@ docker ps -a --filter ancestor='overv/openstreetmap-tile-server' --format="{{.ID
 docker container prune -f
 docker volume rm osm-data
 docker images | awk  '$1 == "overv/openstreetmap-tile-server" {print $3}' | xargs docker image rm
+docker volume prune -f

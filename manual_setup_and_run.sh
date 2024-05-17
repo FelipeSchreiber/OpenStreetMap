@@ -1,6 +1,7 @@
 #! /bin/bash
 : '
 https://switch2osm.org/serving-tiles/using-a-docker-container/
+https://github.com/Overv/openstreetmap-tile-server/tree/master
 '
 
 download_from_container=false
@@ -19,8 +20,13 @@ if [ -z "$region" ]; then
 fi
 
 if [ -z "$port" ]; then
-    echo "--- setting default \$port to 7070:70"
-    port="${port:-7070:70}"
+    echo "--- setting default \$port to 7070"
+    port="${port:-7070}"
+fi
+
+vol=$(docker volume inspect osm-data)
+if [[ $?=1 ]]; then
+    docker volume create osm-data
 fi
 
 if $download_from_container; then
@@ -29,11 +35,7 @@ else
     if ! [ -f *osm.pbf ]; then
         ./download_data.sh -r "$region"
     fi
-    vol=$(docker volume inspect osm-data)
-    if [[ $?=1 ]]; then
-        docker volume create osm-data
-    fi
     ./setup.sh 
 fi
 echo "################ FINISHED SETUP ################"
-./launch_tiles_server.sh -p "$port"
+./launch_tiles_server.sh -p "$port:80"
