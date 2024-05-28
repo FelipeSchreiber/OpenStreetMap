@@ -4,6 +4,7 @@ https://switch2osm.org/serving-tiles/using-a-docker-container/
 https://github.com/Overv/openstreetmap-tile-server/tree/master
 '
 git clone https://github.com/FelipeSchreiber/openstreetmap-tile-server.git
+rm -rf openstreetmap-tile-server/.git*
 rm -f openstreetmap-tile-server/leaflet-demo.html
 cp leaflet-demo.html ./openstreetmap-tile-server
 cp power_tower.png ./openstreetmap-tile-server
