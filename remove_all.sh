@@ -6,3 +6,4 @@ docker container prune -f
 docker volume rm osm-data
 docker images | awk  '$1 == "overv/openstreetmap-tile-server" {print $3}' | xargs docker image rm
 docker volume prune -f
+rm -rf openstreetmap-tile-server
