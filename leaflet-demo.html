@@ -49,9 +49,12 @@
                 "coordinates": [[-22.917089, -43.7505],[-22.722219, -43.64222]]
             }];
 
-            for (line in myLines) {
+            for (i = 0; i < myLines.length; i++) {
+                line = myLines[i];
                 var pointList = [];
-                for (coordinate in line.coordinates) {
+                for (j = 0; j < line["coordinates"].length; j++) 
+                {
+                    var coordinate = line["coordinates"][j];
                     var p = new L.LatLng(coordinate[0],coordinate[1]);
                     pointList.push(p);
                 }
