@@ -33,19 +33,19 @@
             var powerTowerIcon = L.icon({
                 iconUrl: 'power_tower.png',
                 iconSize:     [19, 45], // size of the icon
-                iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                iconAnchor:   [19, 45], // point of the icon which will correspond to marker's location
                 popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
             });
-            var marker = L.marker([35.91635098054854, 14.413997499494872],{icon: powerTowerIcon}).addTo(map);
-            marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+            var marker = L.marker([-22.917089, -43.7505],{icon: powerTowerIcon}).addTo(map);
+            marker.bindPopup("<b>RJUSSC</b><br>SANTA CRUZ").openPopup();
             
-            var marker = L.marker([36.04474839211366, 14.255382147600185],{icon: powerTowerIcon}).addTo(map);
-            marker.bindPopup("<b>Hello world!</b><br>I am another popup.").openPopup();
+            var marker = L.marker([-22.722219, -43.64222],{icon: powerTowerIcon}).addTo(map);
+            marker.bindPopup("<b>RJUTBF</b><br>B.FLUMINENSE").openPopup();
 
-            var myLines = [{
+            var myLines = {
                 "type": "LineString",
-                "coordinates": [[35.91635098054854, 14.413997499494872], [36.04474839211366, 14.255382147600185]]
-            }];
+                "coordinates": [[-22.917089, -43.7505],[-22.722219, -43.64222]]
+            };
 
             var myStyle = {
                 "color": "#ff7800",
